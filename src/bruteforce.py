@@ -53,7 +53,14 @@ class Crack:
 
 		else:
 	
-			wordlist = raw_input("Enter the name of the dictionary: ")
+			wordlist = raw_input("Enter the name of the dictionary leave default [ " + Fore.GREEN + "wordlist.txt" + Fore.WHITE + " ]: ")
+			if (wordlist == ""):
+				wordlist = "wordlist.txt"
+				if (os.path.isfile(wordlist) == False):
+					ui.print_text("ERROR", 'Default wordlist is missing..')
+					sys.exit(1)
+
+
 			username = raw_input("Enter the username: ")
 			while (username == ""): 			
 			       username = raw_input("Enter the username: ")
@@ -85,10 +92,6 @@ class Crack:
 				else:
 					ui.print_text("ERROR", "Attempting Login With %s:%s" % (username, password))
 					time.sleep(1)
-
-			if (self.login(username, password) == False):
-				ui.print_text("ERROR", "Could not find the password, Injections may not work try a different wordlist.")
-				sys.exit(1)
 		else:
 			ui.print_text('ERROR', "Wordlist does not exist")
 			sys.exit(1)
@@ -115,8 +118,8 @@ class Crack:
 		request = self.session.post(self.loginurl, data=payload, headers=headers) 
 		postusr = ""
 		postpas = ""
+		newpost = ""
 		return 'login' not in request.url
-
 
 
 
