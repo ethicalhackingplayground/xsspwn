@@ -39,7 +39,7 @@ def banner ():
  ▄███     ███▄     ▄█    ███    ▄█    ███   ███        ███ ▄█▄ ███ ███   ███ 
 ████       ███▄  ▄████████▀   ▄████████▀   ▄████▀       ▀███▀███▀   ▀█   █▀  
                                                                              
-		     XSS EXPLOIT AUTMOMATOR
+		     XSS EXPLOIT SCANNER
 			CODEBY:Krypt0Mux                                                      
 """
 	print (fg.red(msg))
