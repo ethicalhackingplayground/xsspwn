@@ -20,5 +20,9 @@ to inject into parameters and check to see if they get reflected back.
 ### Getting Help
 `python xsspwn.py -h`
 
+### Bug Fixes
+* There is no need for ***tor***, I had problems with that implemented.
+* I fixed a bug where it said it only found ***2 Injections***.
+
 ### Demo
 [https://www.youtube.com/watch?v=FcshLiRMfB4&t=38s](https://www.youtube.com/watch?v=FcshLiRMfB4&t=38s)
