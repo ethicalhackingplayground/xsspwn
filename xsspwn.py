@@ -11,7 +11,7 @@ from src.ui import *
 def terms():
 	banner()
 	print("""
-WARNING: Do not use this tool for illegal activites, I am not hold responsible for any damage or halm that is done.
+WARNING: Do not use this tool for illegal activities, I am not hold responsible for any damage or halm that is done.
 Using this tool to hack other peoples website can lead to some serious trouble
 	""")
 	agree = raw_input("Do you agree to the terms and conditions: [Y/n]: ")
