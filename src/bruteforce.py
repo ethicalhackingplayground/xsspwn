@@ -53,7 +53,7 @@ class Crack:
 
 		else:
 	
-			wordlist = raw_input("Enter the name of the dictionary leave default [ " + Fore.GREEN + "wordlist.txt" + Fore.WHITE + " ]: ")
+			wordlist = raw_input("Enter the name of the dictionary leave empty for default [ " + Fore.GREEN + "wordlist.txt" + Fore.WHITE + " ]: ")
 			if (wordlist == ""):
 				wordlist = "wordlist.txt"
 				if (os.path.isfile(wordlist) == False):
