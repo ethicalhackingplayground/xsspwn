@@ -39,6 +39,14 @@ class Crack:
 	Login to the website
 	"""		
 	def bruteforce(self):
+
+		c = self.postdata.split("&")
+		if len(c) > 3:
+			ui = UI()
+			ui.print_text("ERROR", "XSSPWN only works with 3 parameters")
+			sys.exit(1)
+			
+
 		option = raw_input("Do you want to bruteforce the password [Y/n]: ")
 		if option == "n" or option == "N" or option == "No" or option == "no":
 			username = raw_input("Username: ")
