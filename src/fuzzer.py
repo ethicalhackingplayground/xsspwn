@@ -73,6 +73,37 @@ class Fuzz ():
 		ui.print_text("DEBUG", "Done..")
 
 
+
+	"""
+	Detects a WAF Firewall
+	"""
+	def detect_waf(self, response):
+
+		ui = UI()
+		if ("4" in str(response)):
+			ui.print_text("WARNING", "site %s seems to be behind a WAF" % self.url) 
+
+			if response.find('WebKnight') >= 0:
+	       			ui.print_text("DEBUG", "Firewall detected: WebKnight")
+				return True
+
+			elif response.find('Mod_Security') >= 0:
+		      		ui.print_text("DEBUG", "Firewall detected: Mod Security")
+				return True
+
+			elif response.find('Mod_Security') >= 0:
+		      		ui.print_text("DEBUG", "Firewall detected: Mod Security")
+				return True
+
+			elif response.find('dotDefender') >= 0:
+		      		ui.print_text("DEBUG", "Firewall detected: Dot Defender")
+				return True
+
+			else:
+	      	      		ui.print_text("INFO", "No Firewall Present")
+				return False
+
+
 	"""
 	Read the response
 	"""
@@ -82,17 +113,18 @@ class Fuzz ():
 		headers = {'User-Agent': generate_user_agent(device_type="desktop", os=('mac', 'linux'))}	
 		ui.print_text('DEBUG', 'Using User-Agent %s' % headers)
 		page_response = session.get(url, headers=headers)
-		if ("4" in str(page_response.status_code)):
-			ui.print_text("WARNING", "Website is behind a WAF")
-			cont = raw_input("Do you want to continue [Y/n]: ")
-			if (cont == "Y" or cont == "y" or cont == "yes" or cont == "Yes"):
-				return page_response		
 
-			else:
+		# Detect a Web Application Firwall.
+		if (self.detect_waf(page_response)):
+			option = raw_input("Do you want to continue: [Y/n]: ")
+			if (option == "n" or option == "N" or option == "No" or option == "no" or option == "nO"):
 				# Exit because website is behind a WAF
 				sys.exit(1)
-		else:	
+			else:
+				return page_response
+		else:
 			return page_response
+	
 
 	"""
 	Start the fuzzer
@@ -104,9 +136,9 @@ class Fuzz ():
 		ui.print_text('DEBUG', "Please be patient...")
 
 		if (self.postdata != None):
-			if ("^USER^" not in self.postdata and "^PASS^" not in self.postdata):
+			if ("^USER^" not in self.postdata or "^PASS^" not in self.postdata):
 				ui = UI()
-				ui.print_text("ERROR", "Make sure to put ^USER^ and ^PASS^ into the username and password fields")
+				ui.print_text("ERROR", "Make sure to put ^USER^ and ^PASS^ into the username and password fields and")
 				sys.exit(1)
 
 		payloadf = self.get_payload()
