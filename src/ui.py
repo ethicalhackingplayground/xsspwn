@@ -11,7 +11,7 @@ class UI(object):
 			print(Fore.BLUE   +  "[" + time +" DEBUG]: " +  Fore.WHITE + "%s" % (text))
 
 		if log_type == "INFO":
-			print(Fore.GREEN  +  "[" + time + " INFO]: " + Fore.WHITE + "%s" % (text))
+			print(Style.BRIGHT + Fore.GREEN  +  "[" + time + " INFO]: " + Fore.WHITE + "%s" % (text))
 
 		if log_type == "WARNING":
 			print(Fore.YELLOW +  "[" + time  + " WARNING]: " + Fore.WHITE + "%s" % (text))
