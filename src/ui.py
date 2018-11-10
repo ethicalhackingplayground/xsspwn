@@ -8,16 +8,16 @@ class UI(object):
 	def print_text(self, log_type, text):
 		time = str(datetime.datetime.now())
 		if log_type == "DEBUG":
-			print(Style.BRIGHT + Fore.BLUE   +  "[" + time +" DEBUG]: " +  Fore.WHITE + "%s" % (text))
+			print(Fore.BLUE   +  "[" + time +" DEBUG]: " +  Fore.WHITE + "%s" % (text))
 
 		if log_type == "INFO":
-			print(Style.BRIGHT + Fore.GREEN  +  "[" + time + " INFO]: " + Fore.WHITE + "%s" % (text))
+			print(Fore.GREEN  +  "[" + time + " INFO]: " + Fore.WHITE + "%s" % (text))
 
 		if log_type == "WARNING":
-			print(Style.BRIGHT + Fore.YELLOW +  "[" + time  + " WARNING]: " + Fore.WHITE + "%s" % (text))
+			print(Fore.YELLOW +  "[" + time  + " WARNING]: " + Fore.WHITE + "%s" % (text))
 
 		if log_type == "ERROR":
-			print(Style.BRIGHT + Fore.RED    +  "[" + time + " ERROR]: " + Fore.WHITE + "%s" % (text))
+			print(Fore.RED    +  "[" + time + " ERROR]: " + Fore.WHITE + "%s" % (text))
 
 	def print_found(self, url):
 		time = str(datetime.datetime.now())
