@@ -173,7 +173,7 @@ class Fuzz ():
 			payload = line
 			u = self.get_url(payload)
 			response = self.read_response(c.get_session(), u)		
-			ui.print_text('DEBUG', 'testing -> ' + Style.BRIGHT + Fore.BLUE + '%s' % u)
+			ui.print_text('DEBUG', 'testing -> ' + Fore.BLUE + '%s' % u)
 		
 			if payload.lower() in response.text.lower():
 				vulns.append(u)
